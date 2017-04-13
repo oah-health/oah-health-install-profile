@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - merci_open_hours
+_core:
+  default_config_hash: I83K9T5Eh50ofnUaOhe-Z0ylAzhWWm-J_BH0RKqe-p4
+name: 'Office hours'
+type: office_hours
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

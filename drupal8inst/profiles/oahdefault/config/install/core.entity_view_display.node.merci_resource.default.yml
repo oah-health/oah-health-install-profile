@@ -1,0 +1,62 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.merci_resource.field_average_visiting_time
+    - field.field.node.merci_resource.field_fee
+    - field.field.node.merci_resource.field_merci_grouping
+    - field.field.node.merci_resource.field_reservable_quantity
+    - field.field.node.merci_resource.field_reservable_status
+    - node.type.merci_resource
+  module:
+    - options
+    - user
+_core:
+  default_config_hash: EdtQ79rUTy-LsRP2pKsGvbMt0ZfDCsR7CSeiGLQoxfo
+id: node.merci_resource.default
+targetEntityType: node
+bundle: merci_resource
+mode: default
+content:
+  field_average_visiting_time:
+    weight: 102
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  field_fee:
+    weight: 103
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  field_merci_grouping:
+    type: entity_reference_label
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_reservable_quantity:
+    type: number_integer
+    weight: 0
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+  field_reservable_status:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

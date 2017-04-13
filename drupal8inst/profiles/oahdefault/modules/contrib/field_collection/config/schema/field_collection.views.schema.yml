@@ -1,0 +1,3 @@
+views.relationship.field_collection_handler_relationship:
+  type: views_relationship
+  label: 'Related field collection'

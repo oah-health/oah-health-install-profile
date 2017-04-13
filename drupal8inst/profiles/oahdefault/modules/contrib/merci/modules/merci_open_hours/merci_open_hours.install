@@ -1,0 +1,15 @@
+<?php
+
+use Drupal\field\Entity\FieldStorageConfig;
+/**
+ *  * Implements hook_uninstall().
+ */
+function merci_open_hours_uninstall() {
+  foreach (array('field_office_hours') as $field) { 
+    if ($field_storage = FieldStorageConfig::loadByName('node', $field)) {
+      $field_storage->delete();
+    }
+  }
+  field_purge_batch(10);
+}
+

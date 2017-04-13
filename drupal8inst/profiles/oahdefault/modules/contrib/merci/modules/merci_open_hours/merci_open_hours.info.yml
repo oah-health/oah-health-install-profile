@@ -1,0 +1,15 @@
+name: Merci Open Hours 
+package: Merci
+description: 'Field for start and end time and day of week for holding weekly office hours.'
+# core: 8.x
+dependencies:
+  - office_hours
+  - path
+  - merci
+type: module
+
+# Information added by Drupal.org packaging script on 2017-04-03
+version: '8.x-2.x-dev'
+core: '8.x'
+project: 'merci'
+datestamp: 1491256387

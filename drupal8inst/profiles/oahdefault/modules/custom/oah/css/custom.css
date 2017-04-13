@@ -1,0 +1,12 @@
+.block-user-login-block ul{
+  display:none;
+}
+button#edit-preview{
+display:none;
+}
+.block-user-login-block label[for="edit-name"] {
+    display: none;
+}
+*{
+font-family: cursive !important;
+}

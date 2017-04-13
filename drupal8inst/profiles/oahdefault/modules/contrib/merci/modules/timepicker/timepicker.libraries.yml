@@ -1,0 +1,10 @@
+timepicker:
+  version: 1.x
+  css:
+    theme:
+      js/time-polyfill/time-polyfill.css: {}
+  js:
+    js/time-polyfill/time-polyfill.js: {}
+  dependencies:
+    - core/jquery
+    - core/modernizr

@@ -1,0 +1,7 @@
+<?php
+
+function timepicker_element_info_alter(array &$types) {
+  if (isset($types['date'])) {
+    $types['date']['#attached']['library'][] = 'timepicker/timepicker';
+  }
+}

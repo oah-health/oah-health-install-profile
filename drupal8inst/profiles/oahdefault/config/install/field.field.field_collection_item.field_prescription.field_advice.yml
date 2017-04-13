@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.field_collection_item.field_advice
+    - field_collection.field_collection.field_prescription
+  module:
+    - text
+id: field_collection_item.field_prescription.field_advice
+field_name: field_advice
+entity_type: field_collection_item
+bundle: field_prescription
+label: Advice
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

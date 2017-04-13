@@ -1,0 +1,23 @@
+uuid: d808f4fa-f2a4-41a0-8503-03b35c04b1ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_merci_allow_weekends
+    - taxonomy.vocabulary.resource_tree
+id: taxonomy_term.resource_tree.field_merci_allow_weekends
+field_name: field_merci_allow_weekends
+entity_type: taxonomy_term
+bundle: resource_tree
+label: 'Merci allow weekends'
+description: 'Allow a reservation to be made over days defined as weekend.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Allow weekends'
+  off_label: 'Don''t allow weekends'
+field_type: boolean

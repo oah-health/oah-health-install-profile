@@ -1,0 +1,22 @@
+uuid: 760da16a-d769-4cea-b831-49df980bcca5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_required_roles
+    - taxonomy.vocabulary.resource_tree
+id: taxonomy_term.resource_tree.field_required_roles
+field_name: field_required_roles
+entity_type: taxonomy_term
+bundle: resource_tree
+label: 'Required Roles'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user_role'
+  handler_settings:
+    target_bundles: null
+field_type: entity_reference

@@ -1,0 +1,18 @@
+name = MERCI Calendar View 
+package = MERCI
+description = "Provides a calendar based view for reservations"
+
+core = 7.x
+
+dependencies[] = merci
+dependencies[] = calendar 
+
+files[] = merci_calendar_view.views_default.inc 
+files[] = merci_calendar_view.module 
+
+; Information added by Drupal.org packaging script on 2017-04-03
+version = "8.x-2.x-dev"
+core = "8.x"
+project = "merci"
+datestamp = "1491256387"
+

@@ -1,0 +1,13 @@
+mlid:
+  'menu_link_content:cb564bc3-5600-4567-a726-8314c81c94b6':
+    roles:
+      - patient
+    access_check: false
+  'menu_link_content:5facafdb-ba5b-48f0-9677-330a15443e38':
+    roles:
+      - patient
+    access_check: false
+  'menu_link_content:54e7c7f7-9640-44e9-8859-64614800c0df':
+    roles:
+      - authenticated
+    access_check: false

@@ -1,0 +1,21 @@
+uuid: 5b6cac72-cc7f-4f56-ae3e-6227b53a8b48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_max_length_of_reservation
+    - taxonomy.vocabulary.resource_tree
+  module:
+    - interval
+id: taxonomy_term.resource_tree.field_max_length_of_reservation
+field_name: field_max_length_of_reservation
+entity_type: taxonomy_term
+bundle: resource_tree
+label: 'Max length of reservation'
+description: 'The maximum time the item can be reserved for in one reservation. Set to zero for no limit.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: interval

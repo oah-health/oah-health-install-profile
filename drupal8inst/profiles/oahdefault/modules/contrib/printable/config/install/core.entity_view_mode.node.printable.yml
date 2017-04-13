@@ -1,0 +1,13 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - printable
+    - node
+  enforced:
+    module:
+      - printable
+id: node.printable
+label: printable
+targetEntityType: node
+cache: true

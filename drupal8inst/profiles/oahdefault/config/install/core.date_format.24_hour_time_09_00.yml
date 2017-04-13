@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - office_hours
+_core:
+  default_config_hash: PqwsNcBrAkxAkmCnJfA5JVUa71x3GNja17X8nT7qgyY
+id: 24_hour_time_09_00
+label: '24 hour time (09:00)'
+locked: false
+pattern: 'H:i'

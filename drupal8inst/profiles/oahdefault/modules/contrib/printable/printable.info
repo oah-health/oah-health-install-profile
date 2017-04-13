@@ -1,0 +1,8 @@
+name = Printer, email and PDF versions for Drupal 8
+
+; Information added by Drupal.org packaging script on 2015-08-21
+version = "8.x-1.x-dev"
+core = "8.x"
+project = "printable"
+datestamp = "1440177240"
+

@@ -1,0 +1,15 @@
+uuid: 9cd0b073-9245-4dcb-9e0d-137f09275f3a
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - merci_open_hours
+name: 'Office hours'
+type: office_hours
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true
+

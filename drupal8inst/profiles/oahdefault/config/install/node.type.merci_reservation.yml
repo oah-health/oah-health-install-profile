@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - datetime_range
+      - merci_reservation
+  module:
+    - menu_ui
+    - merci
+third_party_settings:
+  merci:
+    reservation_conflicts:
+      date_field: merci_reservation_date
+      item_field: merci_reservation_items
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+_core:
+  default_config_hash: 9E4YAtkHbDnLOdTZZ_opwfOhvlkWe6AHV8xCKS0fQGg
+name: Reservation
+type: merci_reservation
+description: 'A reservation reserves a resource or group of resources for some period of time.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

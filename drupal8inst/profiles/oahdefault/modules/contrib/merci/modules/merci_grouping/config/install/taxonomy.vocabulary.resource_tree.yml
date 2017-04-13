@@ -1,0 +1,12 @@
+uuid: dc29d2d3-4dfa-49f7-8f03-3ed1441b446c
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - merci_grouping
+name: 'Resource Tree'
+vid: resource_tree
+description: ''
+hierarchy: 0
+weight: 0

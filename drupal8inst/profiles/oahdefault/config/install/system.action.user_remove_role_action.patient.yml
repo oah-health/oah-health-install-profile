@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.patient
+  module:
+    - user
+id: user_remove_role_action.patient
+label: 'Remove the Patient role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: patient

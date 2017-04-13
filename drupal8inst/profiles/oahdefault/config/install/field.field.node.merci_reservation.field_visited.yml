@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_visited
+    - node.type.merci_reservation
+id: node.merci_reservation.field_visited
+field_name: field_visited
+entity_type: node
+bundle: merci_reservation
+label: Visited
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Visited
+  off_label: Waiting
+field_type: boolean

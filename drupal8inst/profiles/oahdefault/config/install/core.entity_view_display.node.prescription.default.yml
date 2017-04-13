@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.prescription.body
+    - field.field.node.prescription.field_booking_reference
+    - node.type.prescription
+  module:
+    - text
+    - user
+id: node.prescription.default
+targetEntityType: node
+bundle: prescription
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  field_booking_reference:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  links:
+    weight: 100
+hidden: {  }

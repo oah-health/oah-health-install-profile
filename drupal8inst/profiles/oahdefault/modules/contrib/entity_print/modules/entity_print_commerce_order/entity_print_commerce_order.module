@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Entity print styles for Commerce Order entities.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function entity_print_commerce_order_theme($existing, $type, $theme, $path) {
+  return array(
+    'entity_print__commerce_order' => array(
+      'base hook' => 'entity_print',
+      'template' => 'entity-print--commerce-order',
+    ),
+  );
+}
+
+/**
+ * Implements hook_entity_print_css().
+ */
+function entity_print_commerce_order_entity_print_css($entity_type, $entity) {
+  if ($entity_type === 'commerce_order') {
+    $path = drupal_get_path('module', 'entity_print_commerce_order');
+    entity_print_add_css($path . '/css/table.css');
+    entity_print_add_css($path . '/css/commerce-order.css');
+  }
+}

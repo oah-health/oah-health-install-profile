@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.field_collection_item.field_file_upload
+    - field_collection.field_collection.field_prescription
+  module:
+    - file
+id: field_collection_item.field_prescription.field_file_upload
+field_name: field_file_upload
+entity_type: field_collection_item
+bundle: field_prescription
+label: 'File Upload'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: txt
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

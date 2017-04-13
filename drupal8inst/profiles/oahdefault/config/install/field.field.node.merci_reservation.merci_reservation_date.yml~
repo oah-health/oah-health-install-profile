@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.merci_reservation_date
+    - node.type.merci_reservation
+  module:
+    - datetime_range
+_core:
+  default_config_hash: gaGUrY8qPXGMMPRrRv95nRgq2vCUqXAuv8bJJX79wBo
+id: node.merci_reservation.merci_reservation_date
+field_name: merci_reservation_date
+entity_type: node
+bundle: merci_reservation
+label: 'Reservation Date'
+description: 'Date of reservation.'
+required: false
+translatable: true
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+    default_date2: ''
+default_value_callback: ''
+settings: {  }
+field_type: datetime_range

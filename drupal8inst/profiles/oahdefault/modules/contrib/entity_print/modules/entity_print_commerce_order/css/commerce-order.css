@@ -1,0 +1,28 @@
+/* Page heading */
+h2 a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Pricing Table from Drupal Commerce */
+.commerce-price-formatted-components {
+  width: 50%;
+  float: right;
+  margin-top: 1em;
+}
+.component-title {
+  background: #f7ffff;
+  color: #333;
+}
+.component-total {
+  background: #e4ffff;
+}
+.field-label,
+.component-type-commerce-price-formatted-amount {
+  font-weight: 700;
+  color: #333;
+}
+.field-type-commerce-customer-profile-reference {
+  margin-top: 1em;
+  line-height: 1.2;
+}

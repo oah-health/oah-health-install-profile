@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_mobile_no
+  module:
+    - telephone
+    - user
+id: user.user.field_mobile_no
+field_name: field_mobile_no
+entity_type: user
+bundle: user
+label: 'Mobile No'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

@@ -1,0 +1,85 @@
+name: oahdefault
+type: profile
+description: 'Installation Profile of OAH-Health.'
+core: 8.x
+
+# Optional: Declare your installation profile as a distribution
+# This will make the installer auto-select this installation profile.
+# The distribution_name property is used in the installer and other places as
+# a label for the software being installed.
+distribution_name: OAH-Health
+
+# Mark this as an 'exclusive' profile, so if it's the only one, it gets auto-
+# selected by default.
+exclusive: 1
+
+# Required modules and themes. The ones included in the standard profile have not been added here.
+dependencies:
+  - automated_cron
+  - system
+  - node
+  - text
+  - history
+  - block
+  - breakpoint
+  - color
+  - config
+  - comment
+  - contextual
+  - telephone
+  - contact
+  - block_content
+  - help
+  - devel
+  - image
+  - options
+  - path
+  - taxonomy
+  - dblog
+  - search
+  - shortcut
+  - toolbar
+  - rdf
+  - quickedit
+  - field
+  - filter
+  - field_ui
+  - file
+  - rdf
+  - views
+  - views_ui
+  - editor
+  - ckeditor
+  - tour
+  - menu_ui
+  - datetime
+  - datetime_range
+  - page_cache
+  - dynamic_page_cache
+  - office_hours
+  - entity_print
+  - google_qr_code
+  - interval
+  - user
+  - link
+  - coffee
+  - menu_item_visibility
+  - entity_print_views
+  - pdf_api
+  - office_hours
+  - printable
+  - update
+  - field_permissions
+  - field_collection
+  - merci
+  - merci_grouping
+  - merci_open_hours
+  - merci_reservation
+  - merci_resource
+  - printable_pdf
+  - oah
+  
+themes:
+  - bartik
+  - seven
+  - bootstrap

@@ -1,0 +1,16 @@
+name: Merci Resource
+package: Merci
+description: 'Node type of a reservable item.'
+# core: 8.x
+dependencies:
+  - merci_grouping
+  - merci_open_hours
+  - merci
+  - views
+type: module
+
+# Information added by Drupal.org packaging script on 2017-04-03
+version: '8.x-2.x-dev'
+core: '8.x'
+project: 'merci'
+datestamp: 1491256387

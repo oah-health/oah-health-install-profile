@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.register
+    - field.field.user.user.field_adhar_card_number
+    - field.field.user.user.field_mobile_no
+    - field.field.user.user.field_user_type
+    - field.field.user.user.user_picture
+  module:
+    - telephone
+    - user
+_core:
+  default_config_hash: LLAieeozVsoZDb-2PbFxRJpQqnKmpR7-4OoRJnduz-U
+id: user.user.register
+targetEntityType: user
+bundle: user
+mode: register
+content:
+  field_adhar_card_number:
+    type: number
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_mobile_no:
+    type: telephone_default
+    weight: 0
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  account: true
+  contact: true
+  field_user_type: true
+  language: true
+  timezone: true
+  user_picture: true

@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  0: 'access content'
+  1: 'use text format basic_html'
+  2: 'access comments'
+  3: 'post comments'
+  4: 'skip comment approval'
+  5: 'access site-wide contact form'
+  6: 'access shortcuts'
+  7: 'search content'
+  8: 'access kint'
+  9: 'create merci_reservation content'
+  12: 'view field_prescription'
+  13: 'view field_patient_name'
+  14: 'view field_advice'
+  15: 'view field_fee'
+  16: 'view field_bill'
+  17: 'view field_billing_name'
+  18: 'view field_billing'
+  19: 'view field_billing_'
+  20: 'view field_billing_amount'
+  21: 'view field_billing_am'
+  22: 'view field_file_upload'
+  23: 'entity print access type node'
+  24: 'entity print access type block_content'
+  25: 'entity print access bundle merci_reservation'
+  26: 'entity print access type field_collection_item'
+  27: 'entity print access bundle field_billing'
+  28: 'entity print access bundle field_diagnostic_information'
+  29: 'entity print views access'

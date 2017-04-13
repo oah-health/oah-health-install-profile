@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - office_hours
+_core:
+  default_config_hash: rDyc5ml5uOELEh4ZFoCYlDyOn7etmcHVcobCaV0n7K4
+id: 12_hour_time_9_00_am
+label: '12 hour time (9:00 am)'
+locked: false
+pattern: 'g:i a'

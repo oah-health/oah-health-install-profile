@@ -1,0 +1,12 @@
+services:
+  plugin.manager.pdf_generator:
+    class: Drupal\pdf_api\PdfGeneratorPluginManager
+    arguments: ['@container.namespaces', '@config.factory', '@module_handler']
+  wkhtmltopdf:
+    class: mikehaertl\wkhtmlto\Pdf
+  mpdf:
+    class: mPDF
+  tcpdf:
+    class: TCPDF
+  dompdf:
+    class: DOMPDF

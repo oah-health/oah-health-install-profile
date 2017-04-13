@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_merci_allow_overnight
+    - taxonomy.vocabulary.resource_tree
+_core:
+  default_config_hash: 7X6pTNDq1DdbxtJh3HGsFi_hIlDBTv0USmyUktrS7ro
+id: taxonomy_term.resource_tree.field_merci_allow_overnight
+field_name: field_merci_allow_overnight
+entity_type: taxonomy_term
+bundle: resource_tree
+label: 'Merci allow overnight'
+description: 'Allow a reservation to continue over multiple days.  If this is not checked, items in this content type must be returned before the checkout closes.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Allow overnight '
+  off_label: 'Don''t allow overnight'
+field_type: boolean

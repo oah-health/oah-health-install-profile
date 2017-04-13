@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_average_visiting_time
+    - node.type.merci_resource
+id: node.merci_resource.field_average_visiting_time
+field_name: field_average_visiting_time
+entity_type: node
+bundle: merci_resource
+label: 'Average Visiting Time'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 5
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

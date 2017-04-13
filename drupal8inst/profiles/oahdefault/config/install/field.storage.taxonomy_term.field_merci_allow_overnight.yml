@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: 2SSHSE8nQ9E7zceGSBDoQDcqorWhcc7ZSxM1XvUS08c
+id: taxonomy_term.field_merci_allow_overnight
+field_name: field_merci_allow_overnight
+entity_type: taxonomy_term
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

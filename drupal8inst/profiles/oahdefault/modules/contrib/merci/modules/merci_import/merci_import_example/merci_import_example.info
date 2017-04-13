@@ -1,0 +1,16 @@
+name = "MERCI Import Example"
+description = "An example of importing MERCI types and items."
+core = "7.x"
+package = "MERCI"
+php = "5.2.4"
+dependencies[] = "feeds"
+features[ctools][] = "feeds:feeds_importer_default:1"
+features[feeds_importer][] = "merci_item"
+features[feeds_importer][] = "merci_type"
+
+; Information added by Drupal.org packaging script on 2017-04-03
+version = "8.x-2.x-dev"
+core = "8.x"
+project = "merci"
+datestamp = "1491256387"
+

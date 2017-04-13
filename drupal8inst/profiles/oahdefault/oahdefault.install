@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the profilename install profile.
+ */
+ 
+use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function oahdefault_install() {
+  // First, do everything in standard profile.
+  include_once DRUPAL_ROOT . '/core/profiles/standard/standard.install';
+  standard_install();
+
+  // Set front page to dashboard
+  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/dashboard')->save(TRUE);
+  
+  
+  /*
+  db_update('system')
+  ->fields(array('status' => 1))
+  ->condition('type', 'theme')
+  ->condition('name', 'bootstrap')
+  ->execute();
+*/
+  // Allow any patient to create account and login.
+  //$user_settings = \Drupal::configFactory()->getEditable('user.settings');
+  //$user_settings->set('register', USER_REGISTER_VISITORS)->save(TRUE);
+
+  // Can add code in here to make nodes, terms, etc.
+}

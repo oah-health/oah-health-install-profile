@@ -1,0 +1,7 @@
+services:
+  merci_resource.uninstall_validator:
+    class: Drupal\merci_resource\MerciResourceUninstallValidator
+    tags:
+      - { name: module_install.uninstall_validator }
+    arguments: ['@entity.manager', '@entity.query', '@config.factory', '@string_translation']
+    lazy: true

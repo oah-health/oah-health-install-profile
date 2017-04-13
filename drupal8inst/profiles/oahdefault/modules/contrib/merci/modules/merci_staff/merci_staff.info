@@ -1,0 +1,17 @@
+name = MERCI Staff
+package = MERCI
+description = "Alters Reservation form to use node author for validation instead of logged in user."
+
+core = 7.x
+
+dependencies[] = merci
+
+
+files[] = merci_staff.module
+
+; Information added by Drupal.org packaging script on 2017-04-03
+version = "8.x-2.x-dev"
+core = "8.x"
+project = "merci"
+datestamp = "1491256387"
+

@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_collection
+id: field_collection_item.prescription_2
+label: 'Prescription 2'
+targetEntityType: field_collection_item
+cache: true

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.field_collection_item.field_billing_
+    - field_collection.field_collection.field_billing
+id: field_collection_item.field_billing.field_billing_
+field_name: field_billing_
+entity_type: field_collection_item
+bundle: field_billing
+label: 'Billing Address'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

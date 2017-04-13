@@ -1,0 +1,12 @@
+# Schema for the configurations files of the field_collection module
+
+field_collection.field_collection.*:
+  type: config_entity
+  label: 'Field collection'
+  mapping:
+    id:
+      type: string
+      label: 'Machine-readable name'
+    label:
+      type: label
+      label: 'Human-readable name'

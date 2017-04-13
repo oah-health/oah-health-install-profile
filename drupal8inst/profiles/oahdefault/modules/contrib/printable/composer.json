@@ -1,0 +1,15 @@
+{
+    "name": "drupal/printable",
+    "description": "Generates printer friendly version of nodes",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Alok Pandey",
+            "email": "iamalok185@gmail.com"
+        }
+    ],
+    "require": {
+        "wa72/htmlpagedom": "~1.1",
+        "smalot/pdfparser": "*"
+    }
+}

@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Entity Print Views module file.
+ */
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function entity_print_views_data_alter(array &$data) {
+  foreach (\Drupal::entityTypeManager()->getDefinitions() as $entity_type_id => $entity_type) {
+    if (isset($data[$entity_type_id])) {
+      $data[$entity_type_id]['entity_print_' . $entity_type_id] = [
+        'field' => [
+          'title' => t('Print link'),
+          'help' => t('Provide a link to print the entity'),
+          'id' => 'entity_print_link',
+        ],
+      ];
+    }
+  }
+}

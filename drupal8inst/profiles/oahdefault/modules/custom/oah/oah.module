@@ -1,0 +1,124 @@
+<?php
+/**
+ * @file
+ * Contains oah.module..
+ */
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\HttpFoundation\Request;
+/**
+ * Implements hook_help().
+ */
+function oah_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the oah module.
+    case 'help.page.oah':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module holds all the customisations') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+/**
+ * Implements hook_form_alter().
+ */
+function oah_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'user_register_form') {
+
+    $form['#validate'][] = 'oah_signup_validate';
+    $form['account']['mail']['#default_value'] = t('abc@abc.com');
+    $form['account']['name']['#default_value'] = t('name placeholder');
+    $form['account']['pass']['#required'] = FALSE;
+
+    array_unshift($form['#validate'], 'oah_signup_validate');
+
+  }
+  if ($form_id == 'user_login_form') {
+
+   $form['#validate'][] = 'oah_login_validate';
+
+   $form['name']['#title'] = "Mobile";
+    $form['name']['#attributes']['placeholder'] = "Mobile No";
+    $form['pass']['#required'] = FALSE;
+    $form['pass']['#access'] = FALSE;
+   $form['actions']['submit']['#value'] = "Go";
+    $form['actions']['submit']['#attributes']['class'][] = "btn btn-primary";
+
+    array_unshift($form['#validate'], 'oah_login_validate');
+  }
+  if ($form_id == 'node_merci_reservation_form') {
+      $form['#validate'][] = 'oah_reservation_validate';
+      array_unshift($form['#validate'], 'oah_signup_validate');
+
+  }
+
+}
+/**
+ * Implements Custom Reservation Handler.
+ */
+ function oah_reservation_validate($form, FormStateInterface $form_state){
+   $account = \Drupal::currentUser();
+   //print_r($account);
+   $name = $account->getUsername();
+   $form_state->setValue('title',"Booking for $name @".date('Y-m-d h:i:s')."");
+  // $form_state->setValue('merci_reservation_date',date('Y-m-d i:h'));
+ }
+/**
+ * Implements Custom Validate Handler.
+ */
+function oah_signup_validate($form, FormStateInterface $form_state){
+
+  $mobile = $form_state->getValue('field_mobile_no');
+  $adhar = $form_state->getValue('field_adhar_card_number');
+
+  $form_state->setValue('mail',$mobile[0]['value'].'abc@abc.com');
+  $form_state->setValue('name',$mobile[0]['value']);
+  $form_state->setValue('pass',$mobile[0]['value']);
+
+}
+/**
+ * Implements Custom Login Validate Handler.
+ */
+function oah_login_validate($form, FormStateInterface $form_state){
+  //kint($form);
+  $mobile = $form_state->getValue('name');
+  $userloaded = user_load_by_name($mobile);
+
+  if($userloaded == FALSE){
+  //user creation if not exists.
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $user = \Drupal\user\Entity\User::create();
+
+  // Mandatory.
+  $user->setPassword("$mobile");
+  $user->enforceIsNew();
+  $user->setEmail("$mobile"."abc@abc.com");
+  $user->setUsername("$mobile");
+  $user->set('field_mobile_no', $mobile);
+
+  // Optional.
+  $user->set('init', 'email');
+  $user->set('langcode', $language);
+  $user->set('preferred_langcode', $language);
+  $user->set('preferred_admin_langcode', $language);
+  $user->set('preferred_admin_langcode', $language);
+
+  //$user->addRole('administrator');
+  $user->activate();
+
+  // Save user account.
+  $result = $user->save();
+}
+
+  //assign username as password.
+  $form_state->setValue('pass',$mobile);
+
+}
+/**
+ * Attaching the the library to all pages.
+ */
+function oah_page_attachments(array &$page) {
+  $page['#attached']['library'][] = 'oah/oah-custom';
+}

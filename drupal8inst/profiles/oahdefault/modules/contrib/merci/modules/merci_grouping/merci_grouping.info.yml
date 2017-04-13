@@ -1,0 +1,15 @@
+name: Merci Grouping 
+package: Merci
+description: 'Groups resources using taxonomy and add fields for controlling reservation of resources.'
+# core: 8.x
+dependencies:
+  - interval 
+  - merci_open_hours
+type: module
+
+
+# Information added by Drupal.org packaging script on 2017-04-03
+version: '8.x-2.x-dev'
+core: '8.x'
+project: 'merci'
+datestamp: 1491256387

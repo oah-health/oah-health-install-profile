@@ -1,0 +1,172 @@
+<?php
+
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\simpletest\WebTestBase;
+use Drupal\Core\Database\Connection;
+use Drupal\Core\Database\Database;
+use Drupal\Core\Database\Statement;
+
+/**
+ *  * Implements hook_uninstall().
+ */
+function merci_reservation_uninstall() {
+  if ($field_storage = FieldStorageConfig::loadByName('node', 'field_reservation_status')) {
+    $field_storage->delete();
+  }
+  if ($field_storage = FieldStorageConfig::loadByName('node', 'merci_reservation_date')) {
+    $field_storage->delete();
+  }
+  if ($field_storage = FieldStorageConfig::loadByName('node', 'merci_reservation_items')) {
+    $field_storage->delete();
+  }
+  field_purge_batch(10);
+}
+
+
+/**
+ * Updates Merci to use new DateTime Field
+ */
+function merci_reservation_update_8001(){
+
+//This patch updates the merci reservation content type to use drupals 'datetime range' module
+//Patch will auto install module if not already
+  $modules = array('datetime_range');
+  $moduleHandler = \Drupal::service('module_handler');
+  if (!$moduleHandler->moduleExists($modules[0])){
+    \Drupal::service('module_installer')->install($modules, TRUE);
+  }
+//Module is now enabled if it was not before
+
+
+//Set variables for field types
+  $old_field = 'merci_reservation_date_value2';
+  $new_field = 'merci_reservation_date_end_value';
+  $field_type = 'daterange';
+  $module = 'datetime_range';
+
+    ///////////////////////////////
+    //DATABASE GET AND WIPE
+      $database = \Drupal::database();
+      // Retrieve existing field data.
+      $entity_type = 'node';
+      $field = 'merci_reservation_date';
+      $tables = [
+        "{$entity_type}__$field",
+        "{$entity_type}_revision__$field",
+      ];
+      $existing_data = [];
+      foreach ($tables as $table) {
+        // Get the old data.
+        $existing_data[$table] = $database->select($table)
+          ->fields($table)
+          ->execute()
+          ->fetchAll(\PDO::FETCH_ASSOC);
+        $depth_counter = 0;
+        //Loop over each result and change array key of old field to new field
+        foreach ($existing_data[$table] as $insert_value) {
+          $keys = array_keys( $existing_data[$table][$depth_counter] );
+          $keys[ array_search( $old_field, $keys ) ] = $new_field;
+          $existing_data[$table][$depth_counter] = array_combine( $keys, $existing_data[$table][$depth_counter] );
+          $depth_counter++;
+        }
+
+        //Wipe the table so drupal will allow table alterations
+        $database->truncate($table)->execute();
+      }
+    //END DATABASE GET AND WIPE
+    ///////////////////////////////
+
+    /////////////////////////////////////////
+    //DATABASE ADD NEW COLUMNs
+      $spec = array(
+        'type' => 'varchar',
+        'description' => 'The end date value for daterange',
+        'length' => 20,
+        'not null' => FALSE,
+      );
+      $schema = Database::getConnection()->schema();
+      $schema->addField('node__merci_reservation_date', $new_field, $spec);
+      $schema->addField('node_revision__merci_reservation_date', $new_field, $spec);
+    //END DATABASE ADD NEW COLUMNs
+    /////////////////////////////////////////
+
+    ////////////////////////////////////////////
+    //UPDATE DEPENDENCIES AND MODULE CALLS
+      $field_storage_configs = \Drupal::entityManager()->getStorage('field_storage_config')->loadByProperties(array('field_name' => 'merci_reservation_date'));
+      ///////////////////////////////////////////
+      //START field_storage_configs foreach
+        foreach ($field_storage_configs as $field_storage) {
+          $new_field_storage = $field_storage->toArray();
+          $new_field_storage['type'] = $field_type;
+          $new_field_storage['module'] = $module;
+          $new_field_storage['dependencies'] = array ( 'module' => array ( 0 => $module, 1 => 'node', ), );
+          $new_field_storage = FieldStorageConfig::create($new_field_storage);
+          $new_field_storage->original = $new_field_storage;
+          $new_field_storage->enforceIsNew(FALSE);
+
+          $new_field_storage->save();
+          $field_name = $field_storage->getName();
+          if (!$fields = \Drupal::entityManager()->getStorage('field_config')->loadByProperties(array('field_name' => $field_name))) {
+            continue;
+          }
+          //Fields foreach
+          foreach ($fields as $field) {
+            $new_field = $field->toArray();
+            $field_type_return = $new_field['field_type'];
+            $new_field['field_type'] = $field_type;
+            $new_field['dependencies'] = array(
+              'module' => array(
+                0 => $module,
+                1 => 'node',
+              ),
+            );
+            $new_field['dependencies'] = array ( 'module' => array ( 0 => $module, 1 => 'node', ), );
+            $new_field = FieldConfig::create($new_field);
+            $new_field->original = $field;
+            $new_field->enforceIsNew(FALSE);
+            $new_field->save();
+            $properties = array(
+              'targetEntityType' => $field->getTargetEntityTypeId(),
+              'bundle' => $field->getTargetBundle()
+            );
+          }
+          //End Fields foreach
+        }
+      //END field_storage_configs foreach
+      ///////////////////////////////////////////
+
+    //UPDATE DEPENDENCIES AND MODULE CALLS
+    ////////////////////////////////////////////
+
+
+  //DROP UNNEEDED FIELDS SO CONFIG DOES NOT THROW ERROR
+  db_drop_field('node__merci_reservation_date', $old_field);
+  db_drop_field('node_revision__merci_reservation_date', $old_field);
+
+  //RUN ENTITY UPDATE
+  \Drupal::entityDefinitionUpdateManager()->applyUpdates();
+
+  ///////////////////////////////
+  // Restore the data.
+    foreach ($tables as $table) {
+      $total_entries = count($existing_data[$table]);
+      if ($total_entries > 0){
+        $depth_counter = 0;
+        foreach ($existing_data[$table] as $insert_value) {
+          $insert_query = $database
+            ->insert($table)
+            ->fields($existing_data[$table][$depth_counter]);
+          $insert_query->execute();
+          $depth_counter++;
+        }
+      }
+    }
+  //END Restore the data
+  ///////////////////////////////
+
+  // Display a message to the user when the update is completed
+  return t('Merci has been updated to use DateTime Range Fields');
+
+  }
+

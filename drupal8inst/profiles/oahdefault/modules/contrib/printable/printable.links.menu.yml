@@ -1,0 +1,5 @@
+printable.configure:
+  title: Printable
+  description: 'Manage your printable module'
+  parent: system.admin_config_ui
+  route_name: printable.configure

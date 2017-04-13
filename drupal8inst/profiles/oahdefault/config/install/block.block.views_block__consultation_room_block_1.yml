@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.consultation_room
+  module:
+    - node
+    - system
+    - user
+    - views
+  theme:
+    - bootstrap
+id: views_block__consultation_room_block_1
+theme: bootstrap
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'views_block:consultation_room-block_1'
+settings:
+  id: 'views_block:consultation_room-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '/node/*/edit'
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+      doctor: doctor
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+  node_type:
+    id: node_type
+    bundles:
+      merci_reservation: merci_reservation
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

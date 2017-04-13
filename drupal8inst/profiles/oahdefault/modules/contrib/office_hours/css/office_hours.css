@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+
+/* Formatter in Views and Pages D8. */
+.office-hours__item {
+    white-space: nowrap;
+}
+.office-hours__item-label {
+}
+.office-hours-status--closed {
+}
+
+/* Formatter in Views and Pages D7. */
+.oh-display {
+    white-space: nowrap;
+}
+
+.oh-display-label {
+    display: inline-block; /* Give each label the same width, to align the hours. */
+    /* width: 9em; */
+    min-width: 3em;
+}
+
+.oh-display-hours {
+}
+
+.oh-display-closed {
+    font-style: italic;
+}
+
+/* Time blocks in the Widget on field and field settings. */
+.office-hours-slot {
+    display: inline;
+    display: -moz-inline-box;
+    display: inline-block;
+}
+
+div.office-hours-slot div {
+    display: inline;
+    display: -moz-inline-box;
+    display: inline-block;
+}
+
+.field-type-office-hours .form-item {
+  display: inline;
+  display: -moz-inline-box;
+  display: inline-block;
+}
+
+/* 'Day' label in the Widget on field and field settings. */
+td div.office-hours-slot label {
+    width: 6em;
+    display: -moz-inline-box;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0 1em 0 0;
+}

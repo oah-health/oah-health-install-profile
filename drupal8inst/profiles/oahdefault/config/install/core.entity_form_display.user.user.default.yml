@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_adhar_card_number
+    - field.field.user.user.field_mobile_no
+    - field.field.user.user.field_user_type
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - image
+    - telephone
+    - user
+_core:
+  default_config_hash: LLAieeozVsoZDb-2PbFxRJpQqnKmpR7-4OoRJnduz-U
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  field_adhar_card_number:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+  field_mobile_no:
+    weight: 0
+    settings:
+      placeholder: 'Mobile No'
+    third_party_settings: {  }
+    type: telephone_default
+  user_picture:
+    type: image_image
+    weight: 2
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  account: true
+  contact: true
+  field_user_type: true
+  language: true
+  timezone: true

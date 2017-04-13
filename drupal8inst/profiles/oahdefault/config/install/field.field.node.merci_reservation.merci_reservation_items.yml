@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.merci_reservation_items
+    - node.type.merci_reservation
+  module:
+    - merci
+third_party_settings:
+  merci:
+    ReservationConflict:
+      date_field: merci_reservation_date
+      item_field: merci_reservation_items
+_core:
+  default_config_hash: w6HTJ3pQgFvp7H4IHLpX2xXDgQ8gy7kR9ebs2u6aXJw
+id: node.merci_reservation.merci_reservation_items
+field_name: merci_reservation_items
+entity_type: node
+bundle: merci_reservation
+label: Items
+description: 'Items to reserve'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: user_reservable_resources
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

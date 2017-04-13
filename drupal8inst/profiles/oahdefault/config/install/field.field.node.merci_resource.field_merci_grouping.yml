@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_merci_grouping
+    - node.type.merci_resource
+    - taxonomy.vocabulary.resource_tree
+_core:
+  default_config_hash: mr5k2rGGWak-KMoCFAgbtEHeHsqLcw77SQryeiC92Vw
+id: node.merci_resource.field_merci_grouping
+field_name: field_merci_grouping
+entity_type: node
+bundle: merci_resource
+label: 'Merci Grouping'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      resource_tree: resource_tree
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

@@ -1,0 +1,15 @@
+<?php
+
+use Drupal\field\Entity\FieldStorageConfig;
+/**
+ *  * Implements hook_uninstall().
+ */
+function merci_grouping_uninstall() {
+  foreach (array('field_max_length_of_reservation', 'field_merci_allow_overnight', 'field_merci_allow_weekends', 'field_required_roles') as $field) { 
+    if ($field_storage = FieldStorageConfig::loadByName('taxonomy_term', $field)) {
+      $field_storage->delete();
+    }
+  }
+  field_purge_batch(10);
+}
+

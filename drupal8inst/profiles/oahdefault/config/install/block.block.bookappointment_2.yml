@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:014da219-1842-4c17-97da-7240143b9713'
+  module:
+    - block_content
+    - system
+    - user
+  theme:
+    - bootstrap
+id: bookappointment_2
+theme: bootstrap
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:014da219-1842-4c17-97da-7240143b9713'
+settings:
+  id: 'block_content:014da219-1842-4c17-97da-7240143b9713'
+  label: 'Book Appointment'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

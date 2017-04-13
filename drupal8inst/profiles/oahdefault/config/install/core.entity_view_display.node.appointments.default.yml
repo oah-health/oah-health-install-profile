@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.appointments.body
+    - field.field.node.appointments.field_doctor
+    - field.field.node.appointments.field_patient_name
+    - node.type.appointments
+  module:
+    - text
+    - user
+id: node.appointments.default
+targetEntityType: node
+bundle: appointments
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  field_doctor:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_patient_name:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  links:
+    weight: 100
+hidden: {  }

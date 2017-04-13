@@ -1,0 +1,47 @@
+uuid: a6f24a70-1ed2-4cb4-8008-8a36c0ac2059
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.office_hours.field_office_hours
+    - node.type.office_hours
+  module:
+    - office_hours
+    - user
+id: node.office_hours.default
+targetEntityType: node
+bundle: office_hours
+mode: default
+content:
+  field_office_hours:
+    type: office_hours
+    weight: 0
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: 12_hour_time_9_00_am
+      showclosed: all
+      office_hours_first_day: ''
+      daysformat: long
+      time_type: G
+      closedformat: Closed
+      separator:
+        days: '<br />'
+        grouped_days: ' - '
+        day_hours: ': '
+        hours_hours: '-'
+        more_hours: ', '
+      current_status:
+        position: hide
+        open_text: 'Currently open!'
+        closed_text: 'Currently closed'
+      compress: 0
+      grouped: 0
+      timezone_field: ''
+    third_party_settings: {  }
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
+

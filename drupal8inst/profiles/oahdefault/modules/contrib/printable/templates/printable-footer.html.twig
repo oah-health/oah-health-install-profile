@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Default theme implementation for printer friendly version of entities.
+ *
+ * Available variables:
+ * - footer_links: Contains all the links present in the page.
+ * - source_url: Contains the source url of page.
+ *
+ * @see template_preprocess_printable_footer()
+ *
+ * @ingroup themeable
+ */
+#}
+<hr/>
+<strong>Source URL:</strong> <i>{{ source_url }}</i>
+{% if footer_links %}
+  <br/>
+  <br/>
+  <strong> List of links present in page </strong>
+  <ul>
+   {% for link in footer_links %}
+    <li>{{ link }}</li>
+   {% endfor %}
+  </ul>
+{% endif %}

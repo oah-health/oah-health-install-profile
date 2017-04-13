@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_collection
+id: field_collection_item.billing_2
+label: 'Billing 2'
+targetEntityType: field_collection_item
+cache: true

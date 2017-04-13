@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - merci_resource
+_core:
+  default_config_hash: 79s7WsbeKNSDJRLDcHIWBhNsF9WLd3Nri1BKHOFvqfg
+name: Resource
+type: merci_resource
+description: 'A reservable resource.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

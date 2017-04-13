@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.waiting_time
+  module:
+    - system
+    - user
+    - views
+  theme:
+    - bartik
+id: views_block__waiting_time_block_2
+theme: bartik
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:waiting_time-block_2'
+settings:
+  id: 'views_block:waiting_time-block_2'
+  label: 'Your Appointment History'
+  provider: views
+  label_display: visible
+  views_label: 'Your Appointment History'
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

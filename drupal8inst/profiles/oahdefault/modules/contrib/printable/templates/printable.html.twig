@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Default theme implementation for printer friendly version of entities.
+ *
+ * Available variables:
+ * - title: Top level node title.
+ * - base_url: URL to the home page.
+ *
+ * @see template_preprocess_printable()
+ *
+ * @ingroup themeable
+ */
+#}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+  <head>
+    <title>{{ title }}</title>
+    <style>
+    .node_view ul li{
+    display:none;
+    }
+    </style>
+    <link type="text/css" rel="stylesheet" href="{{ base_url }}/css/drupal-printable.css" />
+      {% if close_script %}
+        <script type="text/javascript" src="{{ close_script }}"></script>
+      {% else %}
+        <script type="text/javascript" src="{{ send_script }}"></script>
+      {% endif %}
+  </head>
+  <body>
+  {{ header }}
+  {{ content }}
+  {{ footer }}
+  </body>
+</html>

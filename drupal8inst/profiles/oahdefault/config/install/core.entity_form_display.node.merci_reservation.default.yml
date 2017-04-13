@@ -1,0 +1,59 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.merci_reservation.field_billing
+    - field.field.node.merci_reservation.field_diagnostic_information
+    - field.field.node.merci_reservation.field_prescription
+    - field.field.node.merci_reservation.field_reservation_status
+    - field.field.node.merci_reservation.field_visited
+    - field.field.node.merci_reservation.merci_reservation_date
+    - field.field.node.merci_reservation.merci_reservation_items
+    - node.type.merci_reservation
+  module:
+    - field_collection
+_core:
+  default_config_hash: 2GsEie2cPLKaHlL5ZeCUt45AqAL3TOaS6Xi0h-UtiFU
+id: node.merci_reservation.default
+targetEntityType: node
+bundle: merci_reservation
+mode: default
+content:
+  field_billing:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: field_collection_embed
+  field_diagnostic_information:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: field_collection_embed
+  field_prescription:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: field_collection_embed
+  field_reservation_status:
+    type: options_select
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+  field_visited:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+  merci_reservation_items:
+    type: options_select
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  merci_reservation_date: true
+  path: true
+  promote: true
+  sticky: true
+  title: true
+  uid: true

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dompdf
+settings:
+  enable_html5_parser: true
+  enable_remote: false
+  default_paper_size: letter
+  cafile: ''
+  verify_peer: false
+  verify_peer_name: false

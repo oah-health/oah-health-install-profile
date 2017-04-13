@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.field_collection_item.field_billing_am
+    - field_collection.field_collection.field_billing
+id: field_collection_item.field_billing.field_billing_am
+field_name: field_billing_am
+entity_type: field_collection_item
+bundle: field_billing
+label: 'Billing Amount'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float

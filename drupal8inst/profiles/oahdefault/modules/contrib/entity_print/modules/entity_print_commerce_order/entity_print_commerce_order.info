@@ -1,0 +1,12 @@
+name = Entity Print Commerce Order
+core = 7.x
+package = Entity Print
+
+dependencies[] = entity_print
+
+; Information added by Drupal.org packaging script on 2016-11-24
+version = "8.x-2.0-beta1+25-dev"
+core = "8.x"
+project = "entity_print"
+datestamp = "1479988683"
+

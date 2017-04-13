@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.appointments.body
+    - field.field.node.appointments.field_doctor
+    - field.field.node.appointments.field_patient_name
+    - node.type.appointments
+  module:
+    - text
+id: node.appointments.default
+targetEntityType: node
+bundle: appointments
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 31
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_doctor:
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_patient_name:
+    weight: 33
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+hidden:
+  created: true
+  path: true
+  promote: true
+  sticky: true
+  title: true
+  uid: true

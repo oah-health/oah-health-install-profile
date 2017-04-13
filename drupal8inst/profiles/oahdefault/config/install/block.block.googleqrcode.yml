@@ -1,0 +1,25 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - google_qr_code
+    - system
+  theme:
+    - bartik
+id: googleqrcode
+theme: bartik
+region: '-1'
+weight: -8
+provider: null
+plugin: 'Google QR Code'
+settings:
+  id: 'Google QR Code'
+  label: 'Google QR Code'
+  provider: google_qr_code
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

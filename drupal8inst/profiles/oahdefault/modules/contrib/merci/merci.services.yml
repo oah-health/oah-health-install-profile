@@ -1,0 +1,3 @@
+services:
+  merci.reservation_conflicts:
+    class: Drupal\merci\ReservationConflicts

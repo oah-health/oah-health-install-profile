@@ -1,0 +1,62 @@
+uuid: 3bcbec2e-896d-49f9-ba37-55574286e026
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.office_hours.field_office_hours
+    - node.type.office_hours
+  module:
+    - office_hours
+    - path
+id: node.office_hours.default
+targetEntityType: node
+bundle: office_hours
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  field_office_hours:
+    type: office_hours_default
+    weight: 0
+    settings:
+      date_element_type: datelist
+      time_type: g
+      increment: '60'
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }
+

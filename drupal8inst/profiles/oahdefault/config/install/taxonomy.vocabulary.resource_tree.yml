@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - merci_grouping
+_core:
+  default_config_hash: lPnsJQW10uWiCR69vC5e3V4UN8eAEZgFdPWk-1TbM4c
+name: 'Resource Tree'
+vid: resource_tree
+description: ''
+hierarchy: 0
+weight: 0

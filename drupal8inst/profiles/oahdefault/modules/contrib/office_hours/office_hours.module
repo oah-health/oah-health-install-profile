@@ -1,0 +1,141 @@
+<?php
+
+/**
+ * @file
+ * Creates a field and widget for inserting working or office hours per day.
+ */
+
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\office_hours\OfficeHoursDateHelper;
+
+/**
+ * Implements hook_theme().
+ */
+function office_hours_theme() {
+  $theme['office_hours'] = [
+    'variables' => [
+      'office_hours' => [],
+      'day_format' => 'long',
+      'days_suffix' => ':',
+      'group_separator' => ' - >',
+      'item_separator' => '<br />',
+      'slot_separator' => ', ',
+      'time_format' => 'G:i',
+      'time_separator' => '-',
+      'closed_text' => NULL,
+    ],
+  ];
+  $theme['office_hours_status'] = [
+    'variables' => [
+      'is_open' => FALSE,
+      'open_text' => NULL,
+      'closed_text' => NULL,
+    ],
+  ];
+
+  return $theme;
+}
+
+/**
+ * Prepares variables for office hours templates.
+ *
+ * Default template: office-hours.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - office_hours: An associative array containing the office hours.
+ *
+ */
+function template_preprocess_office_hours(&$variables) {
+  $office_hours = $variables['office_hours'];
+  $day_names = OfficeHoursDateHelper::weekDaysByFormat($variables['day_format']);
+  $group_separator = $variables['group_separator'];
+  $time_format = $variables['time_format'];
+  if ($variables['closed_text'] === NULL) {
+    $variables['closed_text'] = t('Closed');
+  }
+
+  $items = [];
+  foreach ($office_hours as $info) {
+    // Format the label.
+    $label = $day_names[$info['startday']];
+    if (isset($info['endday'])) {
+      $label .= $group_separator . $day_names[$info['endday']];
+    }
+    $label .= $variables['days_suffix'];
+
+    // Format the time slots.
+    if (!$info['times']) {
+      $slots = $variables['closed_text'];
+      //Get the slot comment.
+      $comment = NULL; // @todo
+    }
+    else {
+      $slots = [];
+      foreach ($info['times'] as $slot) {
+        $slots[] = OfficeHoursDateHelper::formatTimeSlot(
+          $slot['start'],
+          $slot['end'],
+          $time_format,
+          $variables['time_separator']
+        );
+      }
+      $slots = implode($variables['slot_separator'], $slots);
+
+      //Get the slot comment.
+      $comment = $slot['comment'];
+    }
+
+    // @todo: use $variables['item_separator'] in office-hours.html.twig. Do not hardcode.
+    $items[] = [
+      'label' => $label,
+      'slots' => $slots,
+      'comment' => $comment,
+      'suffix' => $variables['item_separator'], // @todo, not used yet in twig.
+    ];
+  }
+
+  $variables['items'] = $items;
+}
+
+/**
+ * Prepares variables for office hours status templates.
+ *
+ * Default template: office-hours-status.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - open: A boolean indicating whether there is an open time slot right now.
+ *   - open_text: A string containing the text to display when there is an
+ *       open time slot.
+ *     - closed_text: A string containing the text to display when there is no
+ *       open time slot.
+ */
+function template_preprocess_office_hours_status(&$variables) {
+  if ($variables['open_text'] === NULL) {
+    $variables['open_text'] = t('Currently open!');
+  }
+  if ($variables['closed_text'] === NULL) {
+    $variables['closed_text'] = t('Currently closed');
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Changes the Field_storage settings form to assure unlimited cardinality.
+ *
+ */
+function office_hours_form_field_storage_config_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $entity = $form_state->getFormObject()->getEntity();
+  if ($entity->getType() == 'office_hours') {
+    $form['cardinality_container']['cardinality'] = array(
+        '#options' => array(FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED => t('Unlimited')),
+        '#default_value' => FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED,
+        '#description' => '<p>' . t("This is unlimited by this field's nature. See
+      'Number of slots' for limiting the number of slots per day."),
+      )
+      + $form['cardinality_container']['cardinality'];
+  }
+}

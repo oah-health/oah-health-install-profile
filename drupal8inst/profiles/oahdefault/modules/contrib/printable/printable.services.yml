@@ -1,0 +1,23 @@
+services:
+  printable.entity_manager:
+    class: Drupal\printable\PrintableEntityManager
+    arguments: ['@entity.manager', '@config.factory', '@url_generator', '@printable.format_plugin_manager']
+  printable.link_builder:
+    class: Drupal\printable\PrintableLinkBuilder
+    arguments: ['@config.factory', '@printable.format_plugin_manager']
+  printable.css_include:
+    class: Drupal\printable\PrintableCssInclude
+    arguments: ['@config.factory', '@theme_handler']
+  printable.subscriber.route:
+    class: Drupal\printable\Routing\RouteSubscriber
+    arguments: ['@printable.entity_manager']
+    tags:
+     - { name: event_subscriber }
+  printable.format_plugin_manager:
+    class: Drupal\printable\PrintableFormatPluginManager
+    arguments: ['@container.namespaces', '@config.factory', '@module_handler']
+  printable.dom_crawler:
+    class: Wa72\HtmlPageDom\HtmlPageCrawler
+  printable.link_extractor:
+    class: Drupal\printable\LinkExtractor\InlineLinkExtractor
+    arguments: ['@printable.dom_crawler', '@url_generator']

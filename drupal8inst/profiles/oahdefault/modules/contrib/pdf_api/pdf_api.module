@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * @file
+ * Provides an API for generating PDFs.
+ */
+
+// Register autoloading of vendor libraries.
+$autoload = __DIR__ . '/vendor/autoload.php';
+if (file_exists($autoload)) {
+  require_once $autoload;
+}

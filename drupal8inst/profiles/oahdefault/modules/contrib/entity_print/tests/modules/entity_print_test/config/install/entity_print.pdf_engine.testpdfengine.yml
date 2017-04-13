@@ -1,0 +1,4 @@
+id: testpdfengine
+settings:
+  test_engine_setting: 'initial value'
+  test_engine_suffix: ''

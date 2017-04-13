@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.field_collection_item.field_billing.field_billing_
+    - field.field.field_collection_item.field_billing.field_billing_am
+    - field.field.field_collection_item.field_billing.field_billing_name
+    - field_collection.field_collection.field_billing
+id: field_collection_item.field_billing.default
+targetEntityType: field_collection_item
+bundle: field_billing
+mode: default
+content:
+  field_billing_:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+  field_billing_am:
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+  field_billing_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden: {  }

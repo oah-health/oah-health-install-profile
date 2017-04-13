@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.waiting_time
+  module:
+    - views
+  theme:
+    - bartik
+id: views_block__waiting_time_block_1
+theme: bartik
+region: featured_top
+weight: -7
+provider: null
+plugin: 'views_block:waiting_time-block_1'
+settings:
+  id: 'views_block:waiting_time-block_1'
+  label: 'Your Sequence No'
+  provider: views
+  label_display: visible
+  views_label: 'Your Sequence No'
+  items_per_page: none
+visibility: {  }

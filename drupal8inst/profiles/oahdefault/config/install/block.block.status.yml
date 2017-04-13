@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:c75de7a2-9d5d-48a4-9c3b-f466131a6647'
+  module:
+    - block_content
+    - system
+    - user
+  theme:
+    - bootstrap
+id: status
+theme: bootstrap
+region: header
+weight: -8
+provider: null
+plugin: 'block_content:c75de7a2-9d5d-48a4-9c3b-f466131a6647'
+settings:
+  id: 'block_content:c75de7a2-9d5d-48a4-9c3b-f466131a6647'
+  label: Status
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+  request_path:
+    id: request_path
+    pages: "/waiting-room\r\n/node/*/edit"
+    negate: true
+    context_mapping: {  }

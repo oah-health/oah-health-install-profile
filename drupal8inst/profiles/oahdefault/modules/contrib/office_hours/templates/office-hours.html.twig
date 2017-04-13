@@ -1,0 +1,9 @@
+<div class="office-hours">
+  {% for item in items %}
+    <span class="office-hours__item">
+      <span class="office-hours__item-label">{{ item.label }}</span>
+      <span class="office-hours__item-slots">{{ item.slots }}</span>
+      <span class="office-hours__item-slots">{{ item.comment }}</span> <br />
+    </span>
+  {% endfor %}
+</div>

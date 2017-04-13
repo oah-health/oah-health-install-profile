@@ -1,0 +1,4 @@
+services:
+  entity_print.renderer.view:
+    class: Drupal\entity_print_views\Renderer\ViewRenderer
+    arguments: ['@theme_handler', '@info_parser', '@asset.resolver', '@asset.css.collection_renderer', '@renderer', '@event_dispatcher', '@entity_type.manager']
