@@ -13,7 +13,7 @@ id: bookappointment
 theme: bartik
 region: content
 weight: -8
-provider: null
+provider: block_content
 plugin: 'block_content:014da219-1842-4c17-97da-7240143b9713'
 settings:
   id: 'block_content:014da219-1842-4c17-97da-7240143b9713'

@@ -145,7 +145,7 @@ function printable_entity_view_mode_info_alter(&$view_modes) {
 /**
  * Implements hook_entity_view().
  */
-function printable_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+function printable_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode, $langcode) {
 
   $config = \Drupal::config('printable.settings');
   \Drupal::service('renderer')->addCacheableDependency($build, $config);

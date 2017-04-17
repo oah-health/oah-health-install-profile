@@ -1,0 +1,35 @@
+uuid: 696e6a95-8f79-4154-a300-f22b134deec2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_merci_grouping
+    - node.type.merci_resource
+    - taxonomy.vocabulary.resource_tree
+id: node.merci_resource.field_merci_grouping
+field_name: field_merci_grouping
+entity_type: node
+bundle: merci_resource
+label: 'Merci Grouping'
+description: ''
+required: true 
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      resource_tree: resource_tree
+    sort:
+      field: _none
+    auto_create: false
+  entityconnect:
+    buttons:
+      button_add: '1'
+      button_edit: '1'
+    icons:
+      icon_add: '0'
+      icon_edit: '0'
+field_type: entity_reference
+

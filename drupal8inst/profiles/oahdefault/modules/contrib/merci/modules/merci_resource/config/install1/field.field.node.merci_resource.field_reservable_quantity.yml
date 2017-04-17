@@ -1,0 +1,26 @@
+uuid: 51c4aed0-da64-41ca-a000-ea6ea92c2076
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reservable_quantity
+    - node.type.merci_resource
+id: node.merci_resource.field_reservable_quantity
+field_name: field_reservable_quantity
+entity_type: node
+bundle: merci_resource
+label: 'Reservable Quantity'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
+

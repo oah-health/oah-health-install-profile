@@ -1,0 +1,21 @@
+uuid: 172a2e65-9d0c-4306-bb00-e3e388dd97e2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_merci_grouping
+field_name: field_merci_grouping
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
+

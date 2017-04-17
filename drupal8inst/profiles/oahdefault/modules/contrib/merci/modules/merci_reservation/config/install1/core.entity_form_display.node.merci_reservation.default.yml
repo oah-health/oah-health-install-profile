@@ -1,0 +1,63 @@
+uuid: f1116603-290e-47e1-8057-871d67ec8d6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.merci_reservation.merci_reservation_date
+    - field.field.node.merci_reservation.merci_reservation_items
+    - node.type.merci_reservation
+  module:
+    - datetime_range
+id: node.merci_reservation.default
+targetEntityType: node
+bundle: merci_reservation
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  field_reservation_status:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  merci_reservation_date:
+    type: daterange_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  merci_reservation_items:
+    type: options_select
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

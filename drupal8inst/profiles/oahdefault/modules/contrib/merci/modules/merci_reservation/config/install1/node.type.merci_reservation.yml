@@ -1,0 +1,32 @@
+type: merci_reservation 
+name: Reservation
+dependencies:
+  enforced:
+      module:
+        - datetime_range 
+        - merci_reservation
+description: 'A reservation reserves a resource or group of resources for some period of time.'
+third_party_settings:
+  merci:
+#    allow_overnight:
+#      date_field: merci_reservation_date
+#      item_field: merci_reservation_items
+#      overnight_field: field_allow_overnight
+#    max_length_of_reservation:
+#      date_field: merci_reservation_date
+#      item_field: merci_reservation_items
+#      interval_field: field_max_length_of_reservation
+#    open_hours:
+#      date_field: merci_reservation_date
+#      item_field: merci_reservation_items
+#      reservable_hours_field: field_reservable_hours 
+#      office_hours_field: field_office_hours
+    reservation_conflicts:
+      date_field: merci_reservation_date
+      item_field: merci_reservation_items
+help: ''
+new_revision: true 
+display_submitted: true
+preview_mode: 1
+status: true
+langcode: en

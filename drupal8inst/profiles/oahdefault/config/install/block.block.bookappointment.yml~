@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:014da219-1842-4c17-97da-7240143b9713'
+  module:
+    - block_content
+    - system
+    - user
+  theme:
+    - bartik
+id: bookappointment
+theme: bartik
+region: content
+weight: -8
+provider: block_content
+plugin: 'block_content:014da219-1842-4c17-97da-7240143b9713'
+settings:
+  id: 'block_content:014da219-1842-4c17-97da-7240143b9713'
+  label: 'Book Appointment '
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+  request_path:
+    id: request_path
+    pages: /node/add/merci_reservation
+    negate: true
+    context_mapping: {  }

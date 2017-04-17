@@ -1,0 +1,24 @@
+uuid: 44ee0cec-8627-416b-875a-90cb23a41910
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reservation_status
+    - node.type.merci_reservation
+  module:
+    - options
+id: node.merci_reservation.field_reservation_status
+field_name: field_reservation_status
+entity_type: node
+bundle: merci_reservation
+label: 'Reservation Status'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: confirmed
+default_value_callback: ''
+settings: {  }
+field_type: list_string
+

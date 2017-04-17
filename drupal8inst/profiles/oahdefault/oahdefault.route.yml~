@@ -1,0 +1,7 @@
+# Drupal 8 oahdefault.routing.yml snippet
+oahdefault.prescriptions:
+  path: '/prescription'
+  defaults:
+    _title: 'Prescriptions'
+  requirements:
+    _permission: 'access content'

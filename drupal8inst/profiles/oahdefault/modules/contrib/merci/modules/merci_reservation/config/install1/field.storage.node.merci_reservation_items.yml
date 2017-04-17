@@ -1,0 +1,19 @@
+uuid: cb554ecd-777b-468f-8a00-d8e92501cba9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.merci_reservations_items
+field_name: merci_reservation_items
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,43 @@
+uuid: e8030238-5b31-46df-bc00-e050da2bdffc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.merci_reservation_items
+    - node.type.merci_reservation
+id: node.merci_reservation.merci_reservation_items
+field_name: merci_reservation_items
+entity_type: node
+bundle: merci_reservation
+label: Items
+description: 'Items to reserve'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: user_reservable_resources 
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference
+third_party_settings:
+  merci:
+#    allow_overnight:
+#      date_field: merci_reservation_date
+#      item_field: merci_reservation_items
+#      overnight_field: field_allow_overnight
+#    max_length_of_reservation:
+#      date_field: merci_reservation_date
+#      item_field: merci_reservation_items
+#      interval_field: field_max_length_of_reservation
+#    open_hours:
+#      date_field: merci_reservation_date
+#      item_field: merci_reservation_items
+#      reservable_hours_field: field_reservable_hours 
+#      office_hours_field: field_office_hours
+    ReservationConflict:
+      date_field: merci_reservation_date
+      item_field: merci_reservation_items

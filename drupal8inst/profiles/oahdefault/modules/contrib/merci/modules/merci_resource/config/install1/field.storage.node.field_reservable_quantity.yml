@@ -1,0 +1,21 @@
+uuid: efda4f9d-d15d-4e59-952e-46de7c859066
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_reservable_quantity
+field_name: field_reservable_quantity
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
+

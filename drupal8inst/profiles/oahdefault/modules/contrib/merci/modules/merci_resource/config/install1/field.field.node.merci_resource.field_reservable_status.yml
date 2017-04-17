@@ -1,0 +1,24 @@
+uuid: bacc06f4-08c8-405f-9600-c5241266e99b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reservable_status
+    - node.type.merci_resource
+  module:
+    - options
+id: node.merci_resource.field_reservable_status
+field_name: field_reservable_status
+entity_type: node
+bundle: merci_resource
+label: 'Reservable status'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: '1'
+default_value_callback: ''
+settings: {  }
+field_type: list_string
+

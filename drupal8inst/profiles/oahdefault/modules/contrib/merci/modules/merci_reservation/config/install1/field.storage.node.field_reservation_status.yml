@@ -1,0 +1,43 @@
+uuid: 065289c4-7fd8-4eee-a100-ba8b64a51807
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_reservation_status
+field_name: field_reservation_status
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: unconfirmed
+      label: Unconfirmed
+    -
+      value: confirmed
+      label: Confirmed
+    -
+      value: checked_out
+      label: 'Checked out'
+    -
+      value: checked_in
+      label: 'Checked in'
+    -
+      value: cancelled
+      label: Cancelled
+    -
+      value: denied
+      label: Denied
+    -
+      value: no_show
+      label: 'No Show'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
+
