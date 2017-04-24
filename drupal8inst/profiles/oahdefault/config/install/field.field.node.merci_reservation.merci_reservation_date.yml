@@ -7,7 +7,7 @@ dependencies:
   module:
     - datetime_range
 _core:
-  default_config_hash: gaGUrY8qPXGMMPRrRv95nRgq2vCUqXAuv8bJJX79wBo
+  default_config_hash: ksW0gQCU_Q5gHvv56w-Iig4f3AF_RqQvOP4PQuWzfWw
 id: node.merci_reservation.merci_reservation_date
 field_name: merci_reservation_date
 entity_type: node
@@ -20,7 +20,9 @@ default_value:
   -
     default_date_type: now
     default_date: now
-    default_date2: ''
+    default_end_date_type: now
+    default_end_date: now
 default_value_callback: ''
 settings: {  }
 field_type: daterange
+

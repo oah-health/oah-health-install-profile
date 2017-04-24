@@ -1,3 +1,4 @@
+uuid: 516cbdbd-3738-4836-83ed-2a4c586c1a9a
 langcode: en
 status: true
 dependencies:
@@ -17,6 +18,8 @@ dependencies:
     - node
     - text
     - user
+_core:
+  default_config_hash: gwEuaAErCjbpyZqP3DVYEUTX5Q_kbwOiK7oyvLaS21g
 id: consultation_room
 label: 'Consultation Room'
 module: views
@@ -932,19 +935,19 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        nid:
-          id: nid
-          table: node_field_data
-          field: nid
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
           relationship: none
           group_type: group
           admin_label: ''
-          label: Booking
+          label: 'Link to edit Content'
           exclude: false
           alter:
-            alter_text: true
-            text: '<a  class="btn btn-primary" href="/node/{{ nid }}/edit?destination=consultation-room">Open</a>'
-            make_link: false
+            alter_text: false
+            text: ''
+            make_link: true
             path: ''
             absolute: false
             external: false
@@ -953,7 +956,7 @@ display:
             trim_whitespace: false
             alt: ''
             rel: ''
-            link_class: ''
+            link_class: 'btn btn-primary'
             prefix: ''
             suffix: ''
             target: ''
@@ -980,73 +983,9 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: number_integer
-          settings:
-            thousand_separator: ''
-            prefix_suffix: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
+          text: Open
           entity_type: node
-          entity_field: nid
-          plugin_id: field
-        nothing_1:
-          id: nothing_1
-          table: views
-          field: nothing
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Visit Type'
-          exclude: true
-          alter:
-            alter_text: true
-            text: "{{ merci_reservation_items }}</br>\n{{ nid }} "
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: false
-          plugin_id: custom
+          plugin_id: entity_link_edit
       defaults:
         fields: false
         access: false
@@ -1076,3 +1015,4 @@ display:
       tags:
         - 'config:field.storage.node.merci_reservation_items'
         - 'config:field.storage.user.user_picture'
+

@@ -3,12 +3,13 @@
  * @file
  * Install, update and uninstall functions for the profilename install profile.
  */
- 
+
 use Drupal\taxonomy\Entity\Vocabulary;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\block\Entity\Block;
 use Drupal\block_content\Entity\BlockContent;
-use Drupal\oahdefault\Entity\MenuLinkContent;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+use \Drupal\node\Entity\Node;
 
 /**
  * Implements hook_install().
@@ -18,34 +19,31 @@ use Drupal\oahdefault\Entity\MenuLinkContent;
  * @see system_install()
  */
 function oahdefault_install() {
-  // First, do everything in standard profile.
+ // First, do everything in standard profile.
   include_once DRUPAL_ROOT . '/core/profiles/standard/standard.install';
   standard_install();
 
+  global $base_url;
+
   // Set front page to dashboard
   \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/dashboard')->save(TRUE);
-  
 
-  // Add Demo block.
+
+  // Add Digital Clinic block.
   $block_content = BlockContent::create([
     'type' => 'basic',
     'info' => 'Digital Clinic',
   ]);
   $block_content->body->value = "<blockquote>
 <h2>Digital Clinic Details</h2>
-
 <blockquote>Contact Number - 9804041856</blockquote>
-
 <blockquote>Clinic timings - Every Day Morning 8 A.M. - 1 P.M. Every Day Night 6 P.M. - 10 P.M.</blockquote>
-
 <blockquote><code>Doctor Is IN</code></blockquote>
 </blockquote>";
 
 $block_content->body->format = "full_html";
-
-
   $block_content->save();
- 
+
   $block = Block::create([
     'id' => 'status1',
     'plugin' => 'block_content:' . $block_content->uuid(),
@@ -62,31 +60,26 @@ $block_content->body->format = "full_html";
   $block->save();
 
 
-global $base_url;
-
 // Add Book Appointment block.
   $block_content = BlockContent::create([
     'type' => 'basic',
     'info' => 'Book Appointment',
   ]);
   $block_content->body->value = '<p>&nbsp;</p>
-
 <blockquote>
 <h2>Book Appointment</h2>
-
-<blockquote><a class="button btn btn-primary" href="/node/add/merci_reservation">Click Here</a></blockquote>
+<blockquote><a class="button btn btn-primary" href="'.$base_url.'/node/add/merci_reservation">Click Here</a></blockquote>
 </blockquote>';
 
 $block_content->body->format = "full_html";
-
   $block_content->save();
- 
+
   $block = Block::create([
     'id' => 'bookappointment1',
     'plugin' => 'block_content:' . $block_content->uuid(),
     'region' => 'content',
     'provider' => 'block_content',
-    'weight' => -100,
+    'weight' => -99,
     'theme' => \Drupal::config('system.theme')->get('default'),
     'visibility' => array('request_path' => array('id' => 'request_path' , 'pages' => '/dashboard')),
     'settings' => [
@@ -95,14 +88,14 @@ $block_content->body->format = "full_html";
     ],
   ]);
   $block->save();
-  
 
-// Creating Menu
-/*
+
+// Creating Menu Items
+
 MenuLinkContent::create([
       'title' => 'Prescriptions',
       'link' => [
-	'uri' => 'internal:/prescription'
+	'uri' => 'internal:/prescriptions'
 	],
       'menu_name' => 'main',
     ])->save();
@@ -115,16 +108,74 @@ MenuLinkContent::create([
       'menu_name' => 'main',
     ])->save();
 
-  /*
-  db_update('system')
-  ->fields(array('status' => 1))
-  ->condition('type', 'theme')
-  ->condition('name', 'bootstrap')
-  ->execute();
-*/
+// Create Terms
+
+    $term = \Drupal\taxonomy\Entity\Term::create([
+        'vid' => 'resource_tree',
+        'name' => 'Emergency',
+        ]);
+    $term->save();
+
+    $term = \Drupal\taxonomy\Entity\Term::create([
+        'vid' => 'resource_tree',
+        'name' => 'Regular New Visit',
+        ]);
+    $term->save();
+
+    $term = \Drupal\taxonomy\Entity\Term::create([
+        'vid' => 'resource_tree',
+        'name' => 'Regular Follow Up Visit',
+        ]);
+    $term->save();
+
+    // Content Creation
+
+    // First Node Creation
+    $node = Node::create([
+        'type'        => 'merci_resource',
+        'title'       => 'Emergency',
+        'field_average_visiting_time'  => '5',
+        'field_merci_grouping'  => '1',
+        ]);
+
+    // Set Owner to Admin.
+    $node->setOwnerId(1);
+    // Save Node
+    $node->save();
+
+
+    // Second Node Creation
+    $node = Node::create([
+        'type'        => 'merci_resource',
+        'title'       => 'New Visit',
+        'field_average_visiting_time'  => '10',
+        'field_merci_grouping'  => '2',
+        ]);
+
+    // Set Owner to Admin.
+    $node->setOwnerId(1);
+    // Save Node
+    $node->save();
+
+
+    // Third Node Creation
+    $node = Node::create([
+        'type'        => 'merci_resource',
+        'title'       => 'Follow Up',
+        'field_average_visiting_time'  => '5',
+        'field_merci_grouping'  => '3',
+        ]);
+
+    // Set Owner to Admin.
+    $node->setOwnerId(1);
+    // Save Node
+    $node->save();
+
+
   // Allow any patient to create account and login.
   //$user_settings = \Drupal::configFactory()->getEditable('user.settings');
   //$user_settings->set('register', USER_REGISTER_VISITORS)->save(TRUE);
 
   // Can add code in here to make nodes, terms, etc.
 }
+
