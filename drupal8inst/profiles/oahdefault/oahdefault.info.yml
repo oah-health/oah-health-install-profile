@@ -7,11 +7,8 @@ core: 8.x
 # This will make the installer auto-select this installation profile.
 # The distribution_name property is used in the installer and other places as
 # a label for the software being installed.
-distribution_name: OAH-Health
-
-# Mark this as an 'exclusive' profile, so if it's the only one, it gets auto-
-# selected by default.
-exclusive: 1
+distribution:
+  name: OAH HEALTH
 
 # Required modules and themes. The ones included in the standard profile have not been added here.
 dependencies:
